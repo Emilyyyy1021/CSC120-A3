@@ -2,6 +2,20 @@ import java.util.*;
 
 class Conversation {
 
+  // Mirror word function
+//   private static String mirrorWord(String word) {
+//   switch (word) {
+//       case "I": return "you";
+//       case "me": return "you";
+//       case "am": return "are";
+//       case "are": return "am";
+//       case "you": return "I";
+//       case "my": return "your";
+//       case "your": return "my";
+//       default: return word;
+//     }
+// }
+
   public static void main(String[] arguments) {
     Scanner sc = new Scanner(System.in);
     List<String> transcript = new ArrayList<String>();
@@ -25,39 +39,61 @@ class Conversation {
       String answer = sc.nextLine();
       transcript.add(answer);
 
+      String new_answer= new String();
+
       if(answer.contains("I")|| answer.contains("you") || answer.contains("me") || answer.contains("am") || answer.contains("my")||answer.contains("your")){
-        if(answer.contains("I")){
-          answer = answer.replaceAll("\\bI\\b", "you");
+        
+        //method 1
+        // // Apply transformations using mirrorWord function
+        // String[] words = answer.split("\\s");
+        // StringBuilder mirroredAnswer = new StringBuilder();
+
+        // for (String word : words) {
+        //     mirroredAnswer.append(mirrorWord(word)).append(" ");
+        // }
+
+        // System.out.print(mirroredAnswer.toString().trim() + "?");
+        // transcript.add(mirroredAnswer.toString().trim() + "?");
+
+        // method 2
+        //  Apply transformations
+         if(answer.contains("I")){
+          new_answer = answer.replaceAll("\\bI\\b", "you");
           // System.out.println(answer);
         }
 
-        if(answer.contains("me")){
-          answer = answer.replaceAll("\\bme\\b", "you");
+         if(answer.contains("me")){
+          new_answer = new_answer.replaceAll("\\bme\\b", "you");
           // System.out.println(answer);
         }
 
-        if(answer.contains("am")){
-          answer = answer.replaceAll("\\bam\\b", "are");
+         if(answer.contains("am")){
+          new_answer = new_answer.replaceAll("\\bam\\b", "are");
           // System.out.println(answer);
         }
 
-        if(answer.contains("you")){
-          answer = answer.replaceAll("\\byou\\b", "I");
+         if(answer.contains("are")){
+          new_answer = new_answer.replaceAll("\\bare\\b", "am");
           // System.out.println(answer);
         }
 
-        if(answer.contains("my")){
-          answer = answer.replaceAll("\\bmy\\b", "your");
+         if(answer.contains("you")){
+          new_answer = new_answer.replaceAll("\\byou\\b", "I");
           // System.out.println(answer);
         }
 
-        if(answer.contains("your")){
-          answer = answer.replaceAll("\\byour\\b", "my");
+         if(answer.contains("my")){
+          new_answer = new_answer.replaceAll("\\bmy\\b", "your");
+          // System.out.println(answer);
+        }
+
+         if(answer.contains("your")){
+          new_answer = new_answer.replaceAll("\\byour\\b", "my");
           // System.out.println(answer);
         }
                   
-          System.out.print(answer + "?");
-          transcript.add(answer + "?");
+          System.out.print(new_answer + "?");
+          transcript.add(new_answer + "?");
 
       } else {
         // randomly selects an index from the arr
