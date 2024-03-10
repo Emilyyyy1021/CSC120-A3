@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * A chatbot that will run in chosen rounds and reply according to the input 
+ */
 class Conversation {
 
   // Mirror word function
@@ -16,6 +19,10 @@ class Conversation {
 //     }
 // }
 
+/**
+ * the main function that runs a number of rounds of conversation
+ * turns accepting input from the user and printing responses
+ */
   public static void main(String[] arguments) {
     Scanner sc = new Scanner(System.in);
     List<String> transcript = new ArrayList<String>();
@@ -30,10 +37,11 @@ class Conversation {
     int rounds = sc.nextInt();
     sc.nextLine();
 
+    // greetings
     System.out.print("Hi there! What's on your mind?");
     transcript.add("Hi there! What's on your mind?");
 
-    // main dialogue 
+    // turns accepting input from the user and printing responses
     for (int i = 1; i <= rounds; i++) {
 
       String answer = sc.nextLine();
@@ -92,11 +100,11 @@ class Conversation {
           // System.out.println(answer);
         }
                   
-          System.out.print(new_answer + "?");
+          System.out.println(new_answer + "?");
           transcript.add(new_answer + "?");
 
       } else {
-        // randomly selects an index from the arr
+        // randomly selects an index from the array list
         int select = random.nextInt(arr.length);
         // prints out the value at the randomly selected index
         System.out.println(arr[select]);
@@ -108,11 +116,12 @@ class Conversation {
     // close the scanner while done 
     sc.close();
 
-    // goodbye message
-    System.out.print("See ya!\n");
+    //goodbye message
+    System.out.println("See ya!\n");
     transcript.add("See ya!\n");
 
-    // print out transcript 
+
+    //print out the transcript of the chat
     System.out.println("\nTranscript:");
     for (String entry : transcript) {
     System.out.println(entry);
